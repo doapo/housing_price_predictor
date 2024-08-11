@@ -4,7 +4,7 @@
 
 class PersonName:
     def __init__(self):
-        pass
+        pass 
 
     def full_name(self, first_name, last_name):
         """
@@ -17,4 +17,4 @@ class PersonName:
         :rtype: str
         """
         name = first_name + " " + last_name
-        return name
+        return name # return the full name of the person
