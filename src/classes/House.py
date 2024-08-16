@@ -4,25 +4,64 @@
 
 
 class House:
-    def __init__():
-        # TODO: Initialize the house objects, this should have the following properties: id, 
-        # neighborhood, house_style, overall_condition, year_built, roof_type, roof_material, 
-        # foundation_material, heating, central_air, electrical, fireplace, garage_area, date_sold
-        pass
-    
+    house_data = {}
+    def __init__(self, id:int, neighborhood:str, house_style:str, overall_condition:int, year_built:int, roof_type:str, roof_material:str, foundation_material:str, heating:str, central_air:str, electrical:str, fireplace:int, garage_area:int, date_sold:str):
+        self.id = id
+        self.neighborhood = neighborhood
+        self.house_style = house_style
+        self.overall_condition = overall_condition
+        self.year_built = year_built
+        self.roof_type = roof_type
+        self.roof_material = roof_material
+        self.foundation_material = foundation_material
+        self.heating = heating
+        self.central_air = central_air
+        self.electrical = electrical
+        self.fireplace = fireplace
+        self.garage_area = garage_area
+        self.date_sold = date_sold
+        House.house_data[id] = self
+
     @classmethod
-    def update_house_by_id(self, house_id: int, updated_fielda:dict) -> None:
-        # TODO: Update the house by id
-        # Example: id = 1, updated_fields = {"neighborhood": "Gilbert"}
-        # This should update the neighborhood of the house with id 1 to Gilbert
-        pass
+    def update_house_by_id(self, house_id: int, updated_fields:dict) -> None:
+        """
+        This method updates the house by id with the updated fields
+
+        :param house_id: The id of the house to update
+        :param updated_fields: The fields to update
+
+        :return: None
+        """
+        for key, value in updated_fields.items():
+            setattr(House.house_data[house_id], key, value)
+        
 
     def delete_house_by_id(self, house_id: int) -> None:
+        """
+        This method deletes the house by id
+
+        :param house_id: The id of the house to delete
+
+        :return: None
+        """
+
         # TODO: Delete the house by id
-        pass
+        del House.house_data[house_id]
+
     @classmethod
-    def get_houses_by_filters(self, filters: list) -> list:
-        # TODO: Get the houses by filters
-        # Example: filters = ["id" : 1, "neighborhood": "Gilbert"]
-        # This should return the house with id 1 and neighborhood Gilbert
-        pass
+    def get_houses_by_filters(self, filters: dict) -> list:
+        """
+        This method gets the houses by filters
+
+        :param filters: The filters to apply
+
+        :return: The list of houses that match the filters
+        """
+        filtered_houses = []
+
+        for house in House.house_data.values():
+            if all(getattr(house, key) == value for key, value in filters.items()):
+                filtered_houses.append(house)
+        return filtered_houses
+
+        
