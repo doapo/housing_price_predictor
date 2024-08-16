@@ -9,7 +9,6 @@ def main():
 
     # create a dictionary with key being the "id" and value being the house object
     house_data = {}
-
     for _, row in df.iterrows():
         house = House(
             id = row['Id'],

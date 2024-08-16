@@ -1,6 +1,6 @@
 import pytest
 
-from classes.House import House
+from src.classes.House import House
 
 def test_update_house_by_id():
     house = House(

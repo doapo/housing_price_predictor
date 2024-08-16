@@ -1,8 +1,3 @@
-# TODO: create the house class including a number of fields including id, neighborhood,
-# house_style, overall_condition, year_built, roof_type, roof_material, foundation_material,
-# heating, central air, electrical, fireplace, garage_area, date_sold (MM/YYYY)
-
-
 class House:
     house_data = {}
     def __init__(self, id:int, neighborhood:str, house_style:str, overall_condition:int, year_built:int, roof_type:str, roof_material:str, foundation_material:str, heating:str, central_air:str, electrical:str, fireplace:int, garage_area:int, date_sold:str):
